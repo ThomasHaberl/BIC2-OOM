@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task4
 {
     class Car
         : IVehicle
     {
-        private double _speed;
+        private double _groundSpeed;
 
 
 
@@ -28,25 +24,36 @@ namespace Task4
 
 
 
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-
-        public double Speed
+        public double GroundSpeed
         {
-            get { return _speed; }
+            get { return _groundSpeed; }
         }
 
 
 
         public void Accelerate()
         {
-            _speed += 1;
+            _groundSpeed += 1;
         }
 
         public void Decelerate()
         {
-            if (_speed > 0)
-                _speed -= 1;
+            if (_groundSpeed > 0)
+                _groundSpeed -= 1;
         }
+
+
+        #region IVehicle support
+
+        public string Manufacturer { get; private set; }
+        public string Model { get; private set; }
+
+
+        public double Speed
+        {
+            get { return _groundSpeed; }
+        }
+
+        #endregion
     }
 }

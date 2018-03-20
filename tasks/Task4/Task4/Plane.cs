@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task4
 {
     class Plane
         : IVehicle
     {
-        private double _speed;
+        private double _airSpeed;
 
 
 
@@ -28,25 +24,36 @@ namespace Task4
 
 
 
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-
-        public double Speed
+        public double AirSpeed
         {
-            get { return _speed; }
+            get { return _airSpeed; }
         }
 
 
 
         public void Accelerate()
         {
-            _speed += 10;
+            _airSpeed += 10;
         }
 
         public void Decelerate()
         {
-            if (_speed > 0)
-                _speed -= 10;
+            if (_airSpeed > 0)
+                _airSpeed -= 10;
         }
+
+
+        #region IVehicle support
+
+        public string Manufacturer { get; private set; }
+        public string Model { get; private set; }
+
+
+        public double Speed
+        {
+            get { return _airSpeed; }
+        }
+        
+        #endregion
     }
 }
