@@ -18,7 +18,7 @@ namespace Task3
     class Car
         :IVehicle
     {
-        private double _speed;
+        private double _groundSpeed;
 
 
 
@@ -36,33 +36,44 @@ namespace Task3
         }
 
 
-
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
         
-        public double Speed
+        public double GroundSpeed
         {
-            get { return _speed; }
+            get { return _groundSpeed; }
         }
 
 
 
         public void Accelerate()
         {
-            _speed += 1;
+            _groundSpeed += 1;
         }
 
         public void Decelerate()
         {
-            if (_speed > 0)
-                _speed -= 1;
+            if (_groundSpeed > 0)
+                _groundSpeed -= 1;
         }
+
+
+        #region IVehicle support
+
+        public string Manufacturer { get; private set; }
+        public string Model { get; private set; }
+
+
+        public double Speed
+        {
+            get { return _groundSpeed; }
+        }
+
+        #endregion
     }
 
     class Plane
         : IVehicle
     {
-        private double _speed;
+        private double _airSpeed;
 
 
 
@@ -80,27 +91,38 @@ namespace Task3
         }
 
 
-
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-
-        public double Speed
+        
+        public double AirSpeed
         {
-            get { return _speed; }
+            get { return _airSpeed; }
         }
 
 
 
         public void Accelerate()
         {
-            _speed += 10;
+            _airSpeed += 10;
         }
 
         public void Decelerate()
         {
-            if (_speed > 0)
-                _speed -= 10;
+            if (_airSpeed > 0)
+                _airSpeed -= 10;
         }
+
+
+        #region IVehicle support
+
+        public string Manufacturer { get; private set; }
+        public string Model { get; private set; }
+
+
+        public double Speed
+        {
+            get { return _airSpeed; }
+        }
+
+        #endregion
     }
 
 
